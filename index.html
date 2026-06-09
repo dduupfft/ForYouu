@@ -8,6 +8,8 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
 <style>
 
 *{
@@ -18,16 +20,33 @@ box-sizing:border-box;
 
 body{
 height:100vh;
-overflow:hidden;
 font-family:Dancing Script,cursive;
 
-background:url("Star.jpg");
+background:url("star.jpg");
 
 display:flex;
 justify-content:center;
 align-items:center;
 
 transition:2s;
+}
+
+body{
+
+  background-image: url("star.jpg");
+
+  background-size: cover;
+
+}
+
+.slide2{
+
+  background-image: url("flower.png");
+
+  background-size:cover;
+
+  background-position:center;
+  
 }
 
 /* popup */
@@ -39,13 +58,12 @@ align-items:center;
 }
 
 .card{
-  
 transition:
     opacity 0.5s ease;
-  
-animation: floatCard 4s ease-in-out infinite;
 
 animation: fadeIn 0.8s ease;
+
+animation: floatCard 4s ease-in-out infinite;
 
 background:rgba(255,255,255,0.18);
 
@@ -65,18 +83,90 @@ box-shadow:
 0 8px 32px rgba(0,0,0,0.3);
 }
 
-@keyframes fadeIn {
+.shooting-star{
 
-  from{
-    opacity:0;
-    transform:translateY(20px);
+  position:fixed;
+
+  top:20%;
+
+  left:-150px;
+
+  width:5px;
+
+  height:5px;
+
+  border-radius:50%;
+
+  background:#dbeafe;
+
+  box-shadow:
+  0 0 10px #fff8cc,
+  0 0 20px #ffe082,
+  0 0 35px #ffd54f;
+
+}
+
+.shooting-star::after{
+
+  content:"";
+
+  position:absolute;
+
+  top:1px;
+
+  left:-120px;
+
+  width:120px;
+
+  height:2px;
+
+  background:linear-gradient(
+  to right,
+  rgba(219,234,254,0),
+  rgba(219,234,254,1)
+);
+
+}
+
+@keyframes shooting {
+
+  0%{
+    transform:
+      translate(0,0)
+      rotate(25deg);
+
+    opacity:0.2;
   }
 
-  to{
+  10%{
     opacity:1;
-    transform:translateY(0);
   }
 
+  100%{
+    transform:
+      translate(600px,300px)
+      rotate(25deg);
+
+    opacity:0;
+  }
+
+}
+
+.shooting-star:nth-child(1){
+  top:15%;
+  animation: shooting 8s linear infinite;
+}
+
+.shooting-star:nth-child(2){
+  top:35%;
+  animation: shooting 10s linear infinite;
+  animation-delay:3s;
+}
+
+.shooting-star:nth-child(3){
+  top:10%;
+  animation: shooting 12s linear infinite;
+  animation-delay:7s;
 }
 
 @keyframes floatCard{
@@ -91,6 +181,20 @@ box-shadow:
 
   100%{
     transform: translateY(0px);
+  }
+
+}
+
+@keyframes fadeIn {
+
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
   }
 
 }
@@ -142,47 +246,115 @@ box-shadow:
 
 .paper{
 
-display:none;
+  display:none;
 
-background:#fff8dc;
+  position:fixed;
 
-width:350px;
+  top:50%;
 
-padding:30px;
+  left:50%;
 
-border-radius:20px;
+  transform:translate(-50%,-50%);
 
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  width:70%;
 
-animation:showPaper 1.5s ease;
+  max-width:500px;
 
-color:#333;
+  max-height:90vh;
 
-font-family:'Dancing Script',cursive;
+  overflow-y:auto;
 
-font-size:26px;
+  z-index:100;
 
-text-align:center;
 }
 
-@keyframes showPaper{
+.paper.show{
 
-from{
-opacity:0;
-transform:translateY(200px);
+  display:block;
+
+  animation:paperEnter 1.2s ease forwards;
+
 }
 
-to{
-opacity:1;
-transform:translateY(0);
+.letter{
+
+  width:400px;
+
+  min-height:500px;
+
+  background-size:100% 100%;
+
+  background-repeat:no-repeat;
+
+  padding:80px 60px;
+
+  box-sizing:border-box;
 }
 
+.letter-content{
+
+font-family: 'Great Vibes', cursive;
+
+max-width: 700px;
+
+  width: 85%;
+
+  margin: auto;
+
+  font-size: 24px;
+
+  line-height: 1.5;
+
+  background:
+  linear-gradient(
+    rgba(245,230,200,0.95),
+    rgba(245,230,200,0.95)
+  ),
+  url("paper-texture.jpg");
+
+  background-size:cover;
+
+  padding:40px;
+
+  border-radius:15px;
+
+  color:#3d2b1f;
+
+}
+
+@keyframes paperEnter{
+
+  0%{
+    transform:
+      translate(-50%, 100vh)
+      scale(.8);
+
+    opacity:0;
+  }
+
+  70%{
+    transform:
+      translate(-50%, -55%)
+      scale(1.03);
+
+    opacity:1;
+  }
+
+  100%{
+    transform:
+      translate(-50%, -50%)
+      scale(1);
+  }
 }
 
 </style>
 </head>
 
 <body>
+
+<div class="shooting-star"></div>
+<div class="shooting-star"></div>
+<div class="shooting-star"></div>
 
 <div class="popup" id="popup">
 
@@ -200,17 +372,59 @@ eh halooo
 
 <div class="paper" id="paper">
 
-Untuk kamu... ❤️
+ <div class="letter-content">
+    <h2>Untuk Mu </h2>
+    <p>
+      untukmu yang kini umurmu bertambah satu, 
+ada jiwa yang ingin merasakan betapa hebatnya perjuangan yang
+telah engkau lalui itu. Namun, sebelum jiwa itu mendatangi mu, 
+ada seribu maaf dari jiwa itu. Maaf jika waktu terasa cepat, 
+entah semesta yang buat, entah ada lelah yang belum bisa di bayar
+dengan tawa.
+ 
+Maaf jika dalam ceritamu masih belum ada jiwa yang memelukmu, 
+menuntunmu, bahkan menyemangatimu karena malu karena banyak salah
+yang di perbuatnya, Maaf jika dalam tidurmu masih ada jiwa
+yang datang hanya untuk mengganggumu, dan Maaf dariku untukmu,
+Maaf jika hadiah dariku tak se indah dan tak semewah 
+dari yang mungkin engkau harapkan. 
 
-<br><br>
+Selamat karena akhirnya kamu kembali bertemu dengan 
+tanggal tiga belas, 
+selamat akhirnya kamu menginjak di angka delapan belas. 
+Kalau sebelumnya kamu rayakan dengan jiwa yang bagaikan perahu yang 
+entah berlabuh kemana, kini hangatnya pelabuhan yang menyambut
+hadirmu kembali bersorak sorai, senyummu, aku harap kali ini kalah
+manis dengan kue yang aku antarkan pada malam yang merindukan. Di
+dunia yang mungkin kamu anggap gelap aku harap ada cahaya di antara
+riuh yang menyeluruh, ada jiwa yang ingin melihatmu bahagia secara
+utuh, ada jiwa yang berharap di tahun-tahun selanjutnya bahagia
+selalu bersamamu. Dimanapun langkahmu berada semoga tuhan selalu
+melindungimu, selalu memberkatimu, dan selalu menjagamu. Semoga
+semesta memelukmu, mendekapmu dari orang orang yang menusuk tanpa
+bertindak, menyayat tanpa bersuara, karena aku yakin jiwa yang teduh
+sepertimu tidak pantas mendapatkan hujan yang di buat, bahkan sekecil
+gerimis pun tidak pantas engkau terima karena terlalu teduhnya jiwa
+mu.
 
-Makasih udah bertahan sampai hari ini.
+Berbahagialah kepada jiwa yang berbentuk raga bernama irsa, 
+Rayakanlah dengan penuh riang tanpa banyak tapi yang sudah beberapa
+kali menyakiti, meskipun tak apa sesekali untuk di tangisi.
+Perihal usia yang telah kamu lalui, yang kamu jalani tanpa pijakkan
+yang di hiasi, yang harus berlumuran darah yang terus membanjiri, 
+tapi setidaknya untuk hari ini tolong berbahagialah wahai raga yang
+bernama irsa, terus lah berjalan hingga tawa yang kamu bawa, agar
+kamu bisa membuat cinta yang abadi. 
 
-Semoga semua hal baik pelan-pelan datang ke hidup kamu.
-
-Dan semoga hari ini jadi salah satu hari yang bikin kamu senyum.
-
-🌸
+terima kasih sudah lahir dan berjumpa dengan ku di dunia yang semu,
+terima kasih sudah bertahan dan berjuang, panjang umur, sehat selalu,
+dan sukses dunia akhirat ya? nanti jika waktunya berpihak mungkin
+bertemu dengan mu adalah hal yang lumrah. Kalau kamu indah bagaikan
+malam mungkin benar kata payung teduh dari lirik "hanya ada sedikit
+bintang malam ini, mungkin karena kau sedang cantik cantiknya".Serta
+Mulia dan Sentosa UNTUK MU
+    </p>
+  </div>
 
 </div>
 
@@ -258,12 +472,17 @@ step++;
 
 else{
 
-document.body.style.background =
-"linear-gradient(to bottom,#ffb7d5,#ffd7e8,#fff0f5)";
+document.body.classList.add("slide2");
+
+document.querySelectorAll(".shooting-star")
+  .forEach(star => {
+    star.style.display = "none";
+  });
 
 document.getElementById("popup").style.display="none";
 
-document.getElementById("paper").style.display="block";
+document.getElementById("paper")
+.classList.add("show");
 
 }
 
