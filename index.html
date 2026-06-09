@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Youu</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+font-family:Dancing Script,cursive;
+
+background:url("Star.jpg");
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+transition:2s;
+}
+
+/* popup */
+
+.popup{
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.card{
+  
+transition:
+    opacity 0.5s ease;
+  
+animation: floatCard 4s ease-in-out infinite;
+
+animation: fadeIn 0.8s ease;
+
+background:rgba(255,255,255,0.18);
+
+border:1px solid rgba(255,255,255,0.25);
+
+padding:30px;
+
+border-radius:25px;
+
+text-align:center;
+
+color:white;
+
+width:320px;
+
+box-shadow:
+0 8px 32px rgba(0,0,0,0.3);
+}
+
+@keyframes fadeIn {
+
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+}
+
+@keyframes floatCard{
+
+  0%{
+    transform: translateY(0px);
+  }
+
+  50%{
+    transform: translateY(-10px);
+  }
+
+  100%{
+    transform: translateY(0px);
+  }
+
+}
+
+h1{
+font-family:'Dancing Script',cursive;
+font-size:65px;
+margin-bottom:15px;
+}
+
+p{
+line-height:1.6;
+margin-bottom:20px;
+}
+
+button{
+ 
+font-family: 'Dancing Script', cursive;
+
+background: linear-gradient(
+    135deg,
+    #fff7cc,
+    #ffe082,
+    #ffca28
+  );
+
+color:#1a1a1a;
+
+border:none;
+
+padding:12px 25px;
+
+border-radius:50px;
+
+cursor:pointer;
+
+font-size:25px;
+
+transition:0.3s;
+
+box-shadow:
+    0 4px 12px rgba(0,0,0,0.25),
+    0 0 20px rgba(255,215,64,0.8),
+    0 0 45px rgba(255,215,64,0.5);
+
+}
+
+/* surat */
+
+.paper{
+
+display:none;
+
+background:#fff8dc;
+
+width:350px;
+
+padding:30px;
+
+border-radius:20px;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+
+animation:showPaper 1.5s ease;
+
+color:#333;
+
+font-family:'Dancing Script',cursive;
+
+font-size:26px;
+
+text-align:center;
+}
+
+@keyframes showPaper{
+
+from{
+opacity:0;
+transform:translateY(200px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="popup" id="popup">
+
+<div class="card" id="card">
+
+<h1>Haii </h1>
+
+<button onclick="nextStep()">
+eh halooo
+</button>
+
+</div>
+
+</div>
+
+<div class="paper" id="paper">
+
+Untuk kamu... ❤️
+
+<br><br>
+
+Makasih udah bertahan sampai hari ini.
+
+Semoga semua hal baik pelan-pelan datang ke hidup kamu.
+
+Dan semoga hari ini jadi salah satu hari yang bikin kamu senyum.
+
+🌸
+
+</div>
+
+<audio id="bgm" loop>
+<source src="music.mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+let step = 0;
+
+function nextStep(){
+
+const card = document.getElementById("card");
+
+const music = document.getElementById("bgm");
+
+if(step === 0){
+
+music.play().catch(()=>{});
+
+card.style.opacity = "0";
+
+setTimeout(() => {
+
+  card.innerHTML = `
+    <h1>Happy Birthday 🎉</h1>
+
+    <p>
+      Ciee ada yang sweet 18th wkwkw,selamat yaa atas perjuangan kamu selama 18 tahun ini, setelah tantangan yang semua kamu hadapi dan kamu berani buat menghadapi itu alhamdulillah semua itu udah kamu selesaikan, anyway aku ada sepatah atau dua patah kata
+    </p>
+
+    <button onclick="nextStep()">
+      eh apatuuu 👀
+    </button>
+  `;
+
+  card.style.opacity = "1";
+
+}, 500);
+
+step++;
+
+}
+
+else{
+
+document.body.style.background =
+"linear-gradient(to bottom,#ffb7d5,#ffd7e8,#fff0f5)";
+
+document.getElementById("popup").style.display="none";
+
+document.getElementById("paper").style.display="block";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
